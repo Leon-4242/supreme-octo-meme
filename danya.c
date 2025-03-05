@@ -47,8 +47,8 @@ int main(void) {
 			}
 		} else {
             if (f) {
-                for (i = 0; i < 7; ++i) storage[7*counter + i] = curr7[i];
                 counter = 1;
+                for (i = 0; i < 7; ++i) storage[7*(counter-1) + i] = curr7[i];
                 f = 0;
             }
 			flag = 1;
@@ -73,10 +73,10 @@ int main(void) {
                     for (i = 0 ; i < 7 ; ++i) max7[i] = curr7[i];
                     sumMax = sum;
                 }
-                if (counter == 1) {
-                    for (i = 0; i < 7; ++i) storage[7*counter + i] = curr7[i];
+                if (counter < 2) {
                     counter++;
-                }
+                    for (i = 0; i < 7; ++i) storage[7*(counter-1) + i] = curr7[i];
+                } else if (counter == 2) counter = 3;
 			}
 		}
 	}
